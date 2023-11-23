@@ -22,23 +22,23 @@ class Solution:
     def search_right(self, nums: List[int], target: int) -> int:
         """serach right board"""
         start, end = 0, len(nums)  # [start, end)
-        right_borad: int = -1
+        right_board: int = -1
         while start < end:
             mid: int = start + (end - start) // 2
             if nums[mid] <= target:
                 start = mid + 1
-                right_borad = start - 1
+                right_board = start - 1
             else:
                 end = mid
-        return right_borad
+        return right_board
 
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        leftBoard = self.search_left(nums, target)
-        rightBoard = self.search_right(nums, target)
-        if leftBoard == -1 or rightBoard == -1:
+        left_board = self.search_left(nums, target)
+        right_board = self.search_right(nums, target)
+        if left_board == -1 or right_board == -1:
             return [-1, -1]
-        elif leftBoard <= rightBoard:
-            return [leftBoard, rightBoard]
+        elif left_board <= right_board:
+            return [left_board, right_board]
         else:
             return [-1, -1]
 
